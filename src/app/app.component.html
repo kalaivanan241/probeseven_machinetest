@@ -1,0 +1,154 @@
+
+<style>
+  .container{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+  }
+
+  .butt{
+    width: 100px;
+    float: left;
+    margin-left: 10px;
+  }
+  .search{
+      width:50%;
+      margin: auto;
+  }
+
+  .fiel{
+    width: 250px;
+    float: left;
+  }
+
+  .table_div{
+      width: 40%;
+      margin:auto;
+  }
+
+  @media(max-width: 700px) {
+    .container{
+    width: 80%;
+    } 
+    .table_div{
+      width: 100%;
+  }
+  h1{
+      font-size:30px;
+  }
+  h2{
+      font-size: 22px;
+  }
+  .search{
+      width:80%;
+      margin: auto;
+  }
+  }
+  .btn-ser {
+    color: #ffffff;
+    background-color: #CC713C;
+    border-color: #CC713C;
+    margin-top: 10px;
+}
+
+</style>
+
+
+<section class='container' style='padding:20px;'> 
+  <div class = 'search'>
+    <input type="text" name="city" id="city" [(ngModel)] = 'city' class='form-control' placeholder="enter the city" style='width: 250px;display: inline-block;'>
+    <input type="button" value="Search" (click)='onSearch()' class = 'btn btn-ser' style='color: #ffffff; background-color: #CC713C;border-color: #CC713C;display: inline;margin-left: 10px'>
+  </div>
+<div style='clear: both;'></div>
+<section *ngIf='flag != 0'>
+<div> <h1 style='color:#CC713C'> Current Weather and Forecast in Your City</h1></div>
+
+<div class='table_div' style='text-align:left;'>
+  <h3> City of  {{city}}</h3>
+  <h3>{{weatherDetail.temp | celsius}} &#8451;</h3>
+  <div>{{weatherDetail.climate}} </div>
+  <div> get at {{ weatherDetail.date | date}}</div>
+  <div > 
+    <table class='table table-striped' style='text-align:left; border: 1px solid lightgray;'>
+      <tr>
+        <td>Wind</td>
+        <td>{{weatherDetail.wind}}</td>
+      </tr>
+      <tr>
+          <td>Cloudness</td>
+          <td>{{weatherDetail.cloudness}}</td>
+      </tr>
+      <tr>
+            <td> Pressure</td>
+            <td>{{weatherDetail.pressure}}hpa</td>
+      </tr>
+      <tr>
+          <td> Humidity</td>
+          <td>{{weatherDetail.humidity}}%</td>
+      </tr>
+      <tr>
+          <td>Rain</td>
+          <td>{{weatherDetail.rain}}</td>
+      </tr>
+      <tr>
+          <td>Sunrise</td>
+          <td>{{weatherDetail.sunrise | time}}</td>
+      </tr>
+      <tr>
+          <td>Sunset</td>
+          <td>{{weatherDetail.sunset | time}}</td>
+      </tr>
+      <tr>
+          <td>Geo Coords</td>
+          <td>{{weatherDetail.geo}}</td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+</section>
+<section *ngIf='flag == 2'>
+        <div class='table_div' style='text-align:left;'>
+      <div>{{weatherDetailOld.temp | celsius}} &#8451;</div>
+      <div> </div>
+      <div> get at {{ weatherDetailOld.date | date}}</div>
+      <div> 
+        <table class='table table-striped' style='text-align:left; border: 1px solid lightgray;'>
+          <tr>
+            <td>Wind</td>
+            <td>{{weatherDetailOld.wind}}</td>
+          </tr>
+          <tr>
+              <td>Cloudness</td>
+              <td>{{weatherDetailOld.cloudness}}</td>
+          </tr>
+          <tr>
+                <td> Pressure</td>
+                <td>{{weatherDetailOld.pressure}}hpa</td>
+          </tr>
+          <tr>
+              <td> Humidity</td>
+              <td>{{weatherDetailOld.humidity}}%</td>
+          </tr>
+          <tr>
+              <td>Rain</td>
+              <td>{{weatherDetailOld.rain}}</td>
+          </tr>
+          <tr>
+              <td>Sunrise</td>
+              <td>{{weatherDetailOld.sunrise | time}}</td>
+          </tr>
+          <tr>
+              <td>Sunset</td>
+              <td>{{weatherDetailOld.sunset  | time}}</td>
+          </tr>
+          <tr>
+              <td>Geo Coords</td>
+              <td>{{weatherDetailOld.geo}}</td>
+          </tr>
+    
+        </table>
+      </div>
+      </div>
+    </section>
+</section>
